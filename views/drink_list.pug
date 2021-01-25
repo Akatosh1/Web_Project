@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 Напитки
+
+  ul
+    each drink in drink_list
+      li
+        a(href=drink.url) #{drink.name}
+        |  (#{drink.price})
+
+    else
+      li Напитков нет.

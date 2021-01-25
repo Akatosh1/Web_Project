@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 Домик в Деревне
+  p Добро пожаловать на сайт нашего ресторана #[em Домик в Деревне].
+
+  h1 Ассортимент
+
+  if error
+    p Error getting dynamic content.
+  else
+    p В нашем заведении сейчас доступно:
+
+    ul
+      li #[strong Блюда:] !{data.food_count}
+      li #[strong Напитки:] !{data.drink_count}
+      li #[strong Столы:] !{data.table_count}
+      li #[strong Незабронированные столы:] !{data.table_available_count}

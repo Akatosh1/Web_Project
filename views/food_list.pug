@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 Блюда
+
+  ul
+    each food in food_list
+      li
+        a(href=food.url) #{food.name}
+        |  (#{food.price})
+
+    else
+      li There are no food.

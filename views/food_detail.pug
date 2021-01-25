@@ -1,0 +1,13 @@
+extends layout
+
+block content
+
+  h1 Блюдо: #{food.title}
+
+  div(style='margin-left:20px;margin-top:20px')
+
+    p Ингредиенты: #{food.ingredients}
+    p Калорийность: #{food.calories}
+    p Описание: #{food.summary}
+    p Цена: #{food.price}
+    

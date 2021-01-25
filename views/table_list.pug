@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 Столики
+
+  ul
+    each val in table_list
+      li
+        a(href=val.url) #{val.persons}
+        if val.status=='Available'
+          span.text-success (#{val.status})
+        else
+          span.text-warning (#{val.status})
+        if val.status!='Available'
+          span  (Due: #{val.due_back_formatted} )
+
+    else
+      li Нет свободных столиков.
