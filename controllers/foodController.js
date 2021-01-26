@@ -62,33 +62,3 @@ exports.food_detail = function(req, res, next) {
     });
 
 };
-
-// Display food create form on GET.
-exports.food_create_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: Food create GET');
-};
-
-// Handle food create on POST.
-exports.food_create_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: Food create POST');
-};
-
-// Display food delete form on GET.
-exports.food_delete_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: Food delete GET');
-};
-
-// Handle food delete on POST.
-exports.food_delete_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: Food delete POST');
-};
-
-// Display food update form on GET.
-exports.food_update_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: Food update GET');
-};
-
-// Handle food update on POST.
-exports.food_update_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: Food update POST');
-};

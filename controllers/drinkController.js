@@ -39,33 +39,3 @@ exports.drink_detail = function(req, res, next) {
     });
 
 };
-
-// Display Drink create form on GET.
-exports.drink_create_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: Drink create GET');
-};
-
-// Handle Drink create on POST.
-exports.drink_create_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: Drink create POST');
-};
-
-// Display Drink delete form on GET.
-exports.drink_delete_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: Drink delete GET');
-};
-
-// Handle Drink delete on POST.
-exports.drink_delete_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: Drink delete POST');
-};
-
-// Display Drink update form on GET.
-exports.drink_update_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: Drink update GET');
-};
-
-// Handle Drink update on POST.
-exports.drink_update_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: Drink update POST');
-};

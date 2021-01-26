@@ -1,5 +1,28 @@
 extends layout
 
 block content
+  h1=title
 
-  h1 Здесь пока ничего нет
+  form(method='POST' action='')
+    if table.status=='Available'
+        div.form-group
+          label(for='persons') Подтвердите кол-во персон:
+          input#persons.form-control(type='text', placeholder='Введите слово N персоны(ы)' name='persons' required='true' value=(table.persons) )
+        div.form-group
+          label(for='owner') Ваше Имя:
+          input#owner.form-control(type='text', placeholder='Введите имя' name='owner' required='true' value=(undefined) )
+        div.form-group
+          label(for='time') Укажите на какое время хотите сделать заказ(заказ делается на целое кол-во часов):
+          input#time.form-control(type='text', placeholder='Введите время заказа' name='time' required='true' value=(undefined) )
+        div.form-group
+          label(for='number') Укажите контактный сотовый номер:
+          input#number.form-control(type='text', placeholder='Введите сотовый номер' name='number' required='true' value=(undefined) )
+    
+        button.btn.btn-primary(type='submit') Забронировать
+    else
+       span.text-warning Извините, но столик уже забронирован
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg

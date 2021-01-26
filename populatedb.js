@@ -65,10 +65,11 @@ function foodCreate(name, price, calories, ingredients, recommend_drink, summary
 }
 
 
-function TableCreate(persons, due_back, status, cb) {
+function TableCreate(persons, status, owner, time, cb) {
   tabledetail = {persons: persons}
-  if (due_back != false) tabledetail.due_back = due_back
   if (status != false) tabledetail.status = status
+  if (owner != false) tabledetail.owner = owner
+  if (time != false) tabledetail.time = time
     
   var table = new Table(tabledetail);    
   table.save(function (err) {
@@ -142,37 +143,37 @@ function createFoods(cb) {
 function createTables(cb) {
     async.parallel([
         function(callback) {
-          TableCreate('2 персоны', false, false, callback)
+          TableCreate('2 персоны', false, false, false, callback)
         },
         function(callback) {
-          TableCreate('2 персоны', false, false, callback)
+          TableCreate('2 персоны', false, false, false, callback)
         },
         function(callback) {
-          TableCreate('2 персоны', false, false, callback)
+          TableCreate('2 персоны', false, false, false, callback)
         },
         function(callback) {
-          TableCreate('2 персоны', false, false, callback)
+          TableCreate('2 персоны', false, false, false, callback)
         },
         function(callback) {
-          TableCreate('4 персоны', false, false, callback)
+          TableCreate('4 персоны', false, false, false, callback)
         },
         function(callback) {
-          TableCreate('4 персоны', false, false, callback)
+          TableCreate('4 персоны', false, false, false, callback)
         },
         function(callback) {
-          TableCreate('4 персоны', false, false, callback)
+          TableCreate('4 персоны', false, false, false, callback)
         },
         function(callback) {
-          TableCreate('4 персоны', false, false, callback)
+          TableCreate('4 персоны', false, false, false, callback)
         },
         function(callback) {
-          TableCreate('4 персоны', false, false, callback)
+          TableCreate('4 персоны', false, false, false, callback)
         },
         function(callback) {
-          TableCreate('6 персон', false, false, callback)
+          TableCreate('6 персон', false, false, false, callback)
         },
         function(callback) {
-          TableCreate('8 персон', false, false, callback)
+          TableCreate('8 персон', false, false, false, callback)
         }
         ],
         // Optional callback
