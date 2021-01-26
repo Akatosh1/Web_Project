@@ -6,8 +6,8 @@ block content
   form(method='POST' action='')
     if table.status=='Available'
         div.form-group
-          label(for='persons') Подтвердите кол-во персон:
-          input#persons.form-control(type='text', placeholder='Введите слово N персоны(ы)' name='persons' required='true' value=(table.persons) )
+          label(for='persons') Количество персон:
+          input#persons.form-control(type='text', placeholder='Введите слово N персоны(ы)' , readonly class="form-control-plaintext", name='persons', required='true' value=(table.persons) )
         div.form-group
           label(for='owner') Ваше Имя:
           input#owner.form-control(type='text', placeholder='Введите имя' name='owner' required='true' value=(undefined) )
