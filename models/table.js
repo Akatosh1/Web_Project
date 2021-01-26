@@ -14,7 +14,6 @@ var TableSchema = new Schema(
   }
 );
 
-// Virtual for bookinstance's URL
 TableSchema
 .virtual('url')
 .get(function () {
@@ -27,11 +26,4 @@ TableSchema
   return '/catalog/table/' + this._id;
 });
 
-TableSchema
-.virtual('due_back_formatted')
-.get(function () {
-  return DateTime.fromJSDate(this.due_back).toLocaleString(DateTime.DATE_MED);
-});
-
-//Export model
 module.exports = mongoose.model('Table', TableSchema);

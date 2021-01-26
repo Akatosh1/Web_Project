@@ -8,7 +8,7 @@ exports.index = function(req, res) {
 
     async.parallel({
         food_count: function(callback) {
-            Food.countDocuments({}, callback); // Pass an empty object as match condition to find all documents of this collection
+            Food.countDocuments({}, callback);
         },
         table_count: function(callback) {
             Table.countDocuments({}, callback);
@@ -29,13 +29,11 @@ exports.food_list = function(req, res, next) {
   Food.find()
     .exec(function (err, list_food) {
       if (err) { return next(err); }
-      //Successful, so render
       res.render('food_list', { title: 'Food List', food_list: list_food });
     });
 
 };
 
-// Display detail page for a specific food.
 exports.food_detail = function(req, res, next) {
 
     async.parallel({
@@ -52,12 +50,11 @@ exports.food_detail = function(req, res, next) {
         },
     }, function(err, results) {
         if (err) { return next(err); }
-        if (results.food==null) { // No results.
+        if (results.food==null) { 
             var err = new Error('Food not found');
             err.status = 404;
             return next(err);
         }
-        // Successful, so render.
         res.render('food_detail', { title: results.food.title, food: results.food, food_instances: results.food_instance } );
     });
 

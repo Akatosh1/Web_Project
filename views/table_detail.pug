@@ -12,10 +12,10 @@ block content
           label(for='owner') Ваше Имя:
           input#owner.form-control(type='text', placeholder='Введите имя' name='owner' required='true' value=(undefined) )
         div.form-group
-          label(for='time') Укажите на какое время хотите сделать заказ(заказ делается на целое кол-во часов):
+          label(for='time') Укажите на какое время хотите сделать заказ(введите целое кол-во часов от 0 до 24):
           input#time.form-control(type='text', placeholder='Введите время заказа' name='time' required='true' value=(undefined) )
         div.form-group
-          label(for='number') Укажите контактный сотовый номер:
+          label(for='number') Укажите контактный сотовый номер(11 цифр без доп знаков):
           input#number.form-control(type='text', placeholder='Введите сотовый номер' name='number' required='true' value=(undefined) )
     
         button.btn.btn-primary(type='submit') Забронировать

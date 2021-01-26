@@ -9,16 +9,15 @@ var FoodSchema = new Schema(
     calories: {type: String, required: true, maxlength: 100},
     ingredients: {type: String, required: true, maxlength: 100},
     recommend_drink: {type: String, required: true, maxlength: 100},
-    summary: {type: String, required: true}
+    summary: {type: String, required: true},
+    picture:{type: String, required: true}
   }
 );
 
-// Virtual for book's URL
 FoodSchema
 .virtual('url')
 .get(function () {
   return '/catalog/food/' + this._id;
 });
 
-//Export model
 module.exports = mongoose.model('Food', FoodSchema);

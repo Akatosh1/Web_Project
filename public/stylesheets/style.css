@@ -1,3 +1,99 @@
+
+/*h1{
+color: #000;
+background-color: #fff
+}*/
+
+/*.my-class{
+    font-weight: bold;
+}*/
+.pirog_s_miasom{
+	width: 300px;
+	height: 200px;
+	background-image: url(../images/pirog_s_miasom.png);
+	background-size: contain;
+}
+.pizza_pepperoni{
+	width: 300px;
+	height: 200px;
+	background-image: url(../images/pizza_pepperoni.png);
+	background-size: contain;
+}
+.belyash{
+	width: 300px;
+	height: 200px;
+	background-image: url(../images/belyash.png);
+	background-size: contain;
+}
+.hachapuri{
+	width: 300px;
+	height: 200px;
+	background-image: url(../images/hachapuri.png);
+	background-size: contain;
+}
+.pirog_s_riboi{
+	width: 300px;
+	height: 200px;
+	background-image: url(../images/pirog_s_riboi.png);
+	background-size: contain;
+}
+.pirojok_s_kapustoi{
+	width: 300px;
+	height: 300px;
+	background-image: url(../images/pirojok_s_kapustoi.png);
+	background-size: contain;
+}
+.pirojok_s_kartoshkoi{
+	width: 300px;
+	height: 200px;
+	background-image: url(../images/pirojok_s_kartoshkoi.png);
+	background-size: contain;
+}
+.cola{
+	width: 201px;
+	height: 284px;
+	background-image: url(../images/cola.png);
+	background-size: contain;
+}
+.sprite{
+	width: 201px;
+	height: 284px;
+	background-image: url(../images/sprite.png);
+	background-size: contain;
+}
+.fanta{
+	width: 300px;
+	height: 200px;
+	background-image: url(../images/fanta.png);
+	background-size: contain;
+}
+.mors{
+	width: 300px;
+	height: 200px;
+	background-image: url(../images/mors.png);
+	background-size: contain;
+}
+.samogon{
+	width: 300px;
+	height: 200px;
+	background-image: url(../images/samogon.png);
+	background-size: contain;
+}
+.pivo{
+	width: 200px;
+	height: 200px;
+	background-image: url(../images/pivo.png);
+	background-size: contain;
+}
+.logo{
+	width: 200px;
+	height: 100px;
+	background-image: url(../images/logo.png);
+	background-size: contain;
+}
+.end{
+	text-align: center;
+}
 .sidebar-nav {
     margin-top: 20px;
     padding: 0;

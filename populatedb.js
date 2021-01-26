@@ -1,13 +1,7 @@
 #! /usr/bin/env node
 
-// Get arguments passed on command line
 var userArgs = process.argv.slice(2);
-/*
-if (!userArgs[0].startsWith('mongodb')) {
-    console.log('ERROR: You need to specify a valid mongodb URL as the first argument');
-    return
-}
-*/
+
 var async = require('async')
 var Food = require('./models/food')
 var Drink = require('./models/drink')
@@ -25,8 +19,8 @@ var drinks = []
 var foods = []
 var tables = []
 
-function drinkCreate(name, price, calories, description, cb) {
-  drinkdetail = {name:name , price: price, calories: calories , description: description}
+function drinkCreate(name, price, calories, description, picture, cb) {
+  drinkdetail = {name:name , price: price, calories: calories , description: description, picture:picture}
   
   var drink = new Drink(drinkdetail);
        
@@ -42,14 +36,15 @@ function drinkCreate(name, price, calories, description, cb) {
 }
 
 
-function foodCreate(name, price, calories, ingredients, recommend_drink, summary, cb) {
+function foodCreate(name, price, calories, ingredients, recommend_drink, summary, picture, cb) {
   fooddetail = { 
     name: name,
     price: price,
     calories: calories,
     ingredients: ingredients,
     recommend_drink: recommend_drink,
-    summary: summary
+    summary: summary,
+    picture: picture
   }
     
   var food = new Food(fooddetail);    
@@ -88,25 +83,24 @@ function TableCreate(persons, status, owner, time, cb) {
 function createDrinks(cb) {
     async.series([
         function(callback) {
-          drinkCreate('Кола', '40 руб.', '300 ccal', 'Кола как кола', callback);
+          drinkCreate('Кола', '40 руб.', '300 ccal', 'Кола как кола', 'cola', callback);
         },
         function(callback) {
-          drinkCreate('Спрайт', '50 руб.', '250 ccal', 'Почти как кола только без красителя', callback);
+          drinkCreate('Спрайт', '50 руб.', '250 ccal', 'Почти как кола только без красителя', 'sprite', callback);
         },
         function(callback) {
-          drinkCreate('Фанта', '45 руб.', '320 ccal', 'Как кола только с другим красителем', callback);
+          drinkCreate('Фанта', '45 руб.', '320 ccal', 'Как кола только с другим красителем', 'fanta', callback);
         },
         function(callback) {
-          drinkCreate('Бабулин морс', '80 руб.', '234 ccal', 'Вкуснейший морс из ягод с бабулиного огорода', callback);
+          drinkCreate('Бабулин морс', '80 руб.', '234 ccal', 'Вкуснейший морс из ягод с бабулиного огорода', 'mors', callback);
         },
         function(callback) {
-          drinkCreate('Алкогольный напиток Дедовский самогон', '150 руб.', 'знает только сам дед', 'Для самых отчаянных', callback);
+          drinkCreate('Алкогольный напиток Дедовский самогон', '150 руб.', 'знает только сам дед', 'Для самых отчаянных', 'samogon', callback);
         },
         function(callback) {
-          drinkCreate('Пиво Балтика', '110 руб.', '435 cl', 'Безалкогольное', callback);
+          drinkCreate('Пиво Балтика', '110 руб.', '435 cl', 'Безалкогольное', 'pivo', callback);
         }
         ],
-        // optional callback
         cb);
 }
 
@@ -114,28 +108,27 @@ function createDrinks(cb) {
 function createFoods(cb) {
     async.parallel([
         function(callback) {
-          foodCreate('Пирог с мясом', '199 руб.', '654 ccal', 'Вкуснейшая свинина со множеством приправ, тесто дрожжевое', 'Бабулин морс', 'Фирменный пирог от бабули', callback);
+          foodCreate('Пирог с мясом', '199 руб.', '654 ccal', 'Вкуснейшая свинина со множеством приправ, тесто дрожжевое', 'Бабулин морс', 'Фирменный пирог от бабули', 'pirog_s_miasom', callback);
         },
         function(callback) {
-          foodCreate('Пицца Пепперони', '430 руб.', '560 ccal', 'сыр Моцарелла, Пепперони, кетчуп Heinz, Базилик, помидоры, огурцы маринованные', 'Кола', 'Бабуля умеет не только печь пироги но и готовить пиццу на толстом тесте', callback);
+          foodCreate('Пицца Пепперони', '430 руб.', '560 ccal', 'сыр Моцарелла, Пепперони, кетчуп Heinz, Базилик, помидоры, огурцы маринованные', 'Кола', 'Бабуля умеет не только печь пироги но и готовить пиццу на толстом тесте', 'pizza_pepperoni', callback);
         },
         function(callback) {
-          foodCreate('Беляш сочный', '80 руб.', '348 ccal', 'Мясной фарш(свинина), тесто дрожжевое', 'Бабулин морс', 'Ну куда же без бабулиных беляшей', callback);
+          foodCreate('Беляш сочный', '80 руб.', '348 ccal', 'Мясной фарш(свинина), тесто дрожжевое', 'Бабулин морс', 'Ну куда же без бабулиных беляшей', 'belyash', callback);
         },
         function(callback) {
-          foodCreate('Хачапури', '70 руб.', '301 ccal', 'Сыр Российский, тесто слоеное', 'Спрайт', 'вкуснейший пирог от бабули', callback);
+          foodCreate('Хачапури', '70 руб.', '301 ccal', 'Сыр Российский, тесто слоеное', 'Спрайт', 'вкуснейший пирог от бабули', 'hachapuri', callback);
         },
         function(callback) {
-          foodCreate('Пирог с рыбой', '253 руб.', '540 ccal', 'Филе рыбное, тесто дрожжевое', 'Алкогольный напиток Дедовский самогон', 'Не фирменный но тоже вкусный', callback);
+          foodCreate('Пирог с рыбой', '253 руб.', '540 ccal', 'Филе рыбное, тесто дрожжевое', 'Алкогольный напиток Дедовский самогон', 'Не фирменный но тоже вкусный', 'pirog_s_riboi', callback);
         },
         function(callback) {
-          foodCreate('Пирожок с капустой', '89 руб.', '249 ccal', 'Капуста свежая, тесто дрожжевое', 'Бабулин морс', 'Куда же без горячих пирожков', callback);
+          foodCreate('Пирожок с капустой', '89 руб.', '249 ccal', 'Капуста свежая, тесто дрожжевое', 'Бабулин морс', 'Куда же без горячих пирожков', 'pirojok_s_kapustoi', callback);
         },
         function(callback) {
-          foodCreate('Пирожок с картошкой', '79 руб.', '302 ccal', 'Картошка свежая, тесто дрожжевое', 'Бабулин морс', 'Куда же без горячих пирожков', callback);
+          foodCreate('Пирожок с картошкой', '79 руб.', '302 ccal', 'Картошка свежая, тесто дрожжевое', 'Бабулин морс', 'Куда же без горячих пирожков', 'pirojok_s_kartoshkoi', callback);
         }
         ],
-        // optional callback
         cb);
 }
 

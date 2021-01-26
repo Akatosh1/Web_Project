@@ -10,22 +10,14 @@ var DrinkSchema = new Schema(
     price: {type: String, required: true, maxlength: 100},
     calories: {type: String, required: true, maxlength: 100},
     description: {type: String, required: true, maxlength: 100},
+    picture:{type: String, required: true}
   }
 );
 
-
-// Virtual for author's URL
 DrinkSchema
 .virtual('url')
 .get(function () {
   return '/catalog/drink/' + this._id;
 });
 
-/*DrinkSchema
-.virtual('lifespan_formatted')
-.get(function () {
-  return this.calories ? DateTime.fromJSDate(this.calories).toLocaleString(DateTime.DATE_MED) : '';
-});*/
-
-//Export model
 module.exports = mongoose.model('Drink', DrinkSchema);
