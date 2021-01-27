@@ -29,7 +29,7 @@ exports.table_detail = function(req, res, next) {
 exports.table_detail_post  = [
 
     body('persons', 'Неправильное подтверждение кол-ва персон.').trim().isLength({ min: 8, max : 9 }).escape(),
-	body('owner', 'Вы должны указать свое имя.').trim().isLength({ min: 3 }).escape(),
+	body('owner', 'Вы должны указать свое имя.').trim().isLength({ min: 3 , max : 15}).escape(),
     body('time', 'Неправильно указано время бронирования.').trim().isLength({ min: 1, max : 2 }).matches(/\d/).escape(),
     body('number', 'Неправильно указан контактный номер.').trim().isLength({ min: 8, max: 12 }).matches(/\d/).escape(),
     
