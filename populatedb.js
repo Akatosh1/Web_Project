@@ -6,6 +6,7 @@ var async = require('async')
 var Food = require('./models/food')
 var Drink = require('./models/drink')
 var Table = require('./models/table')
+var Trap = require('./models/trap')
 
 
 var mongoose = require('mongoose');
@@ -18,6 +19,23 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 var drinks = []
 var foods = []
 var tables = []
+var traps = []
+
+function trapCreate(address, text, cb){
+  trapdetail = {address:address, text:text}
+
+  var trap = new Trap(trapdetail);
+
+  trap.save(function (err) {
+    if (err) {
+      cb(err, null)
+      return
+    }
+    console.log('New IP: ' + trap);
+    traps.push(trap)
+    cb(null, trap)
+  }  );
+}
 
 function drinkCreate(name, price, calories, description, picture, cb) {
   drinkdetail = {name:name , price: price, calories: calories , description: description, picture:picture}
@@ -77,6 +95,10 @@ function TableCreate(persons, status, owner, time, cb) {
     tables.push(table)
     cb(null, table)
   }  );
+}
+
+function createTraps(cb){
+   async.series([function(callback){trapCreate("Айпи", "Тест", callback)}], cb);
 }
 
 
@@ -178,7 +200,8 @@ function createTables(cb) {
 async.series([
     createDrinks,
     createFoods,
-    createTables
+    createTables,
+    createTraps
 ],
 // Optional callback
 function(err, results) {

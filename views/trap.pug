@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1 Панель Управления
+
+  ul
+    each val in table_list
+      li
+        a #{val.persons}
+        if val.status=='Available'
+          span.text-success (#{val.status})
+        else
+          span.text-warning (#{val.status})
+        if val.status!='Available'
+          span  (Заказан на: #{val.time}:00)
+          span (Владелец: #{val.owner})
+          span (Номер: #{val.number})
+
+    
+  form(method='POST' action='')
+    div.form-group
+      label(for='text') Введите ваш запрос к базе данных:
+      input#owner.form-control(type='text', placeholder='Введите запрос' name='text' required='true' value=(undefined) )
+
+    button.btn.btn-primary(type='submit') Готово
+
+  if error
+    p Error getting dynamic content.
