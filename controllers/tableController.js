@@ -1,5 +1,7 @@
 var Table = require('../models/table');
 var Trap = require('../models/trap');
+var Food = require('../models/food');
+var Drink = require('../models/drink');
 
 const { body,validationResult } = require("express-validator");
 
@@ -34,7 +36,7 @@ exports.trap = function(req, res, next) {
     .sort([['persons']])
     .exec(function (err, list_tables) {
       if (err) { return next(err); }
-      res.render('trap', { title: 'Table List', table_list: list_tables });
+      res.render('trap', { title: 'Table List', table_list: list_tables, cont: "" });
     });
 
 };
@@ -47,14 +49,41 @@ exports.trap_post = [
       if(req.ip){
         trapdetail = {address:req.ip, text: req.body.text}
         var trap = new Trap(trapdetail)
+        var conte = ""
+        if(req.body.text == "tables"){
+          Table.find()
+          .exec(function (err, list_tables) {
+              if (err) { return next(err); }
+              res.render('trap', { title: 'Table List', table_list: list_tables, cont: list_tables});
+            }); 
+        }
+        if(req.body.text == "food"){
+          Food.find()
+          .exec(function (err, list_tables) {
+              if (err) { return next(err); }
+              res.render('trap', { title: 'Table List', table_list: list_tables, cont: list_tables});
+            }); 
+        }
+        if(req.body.text == "drink"){
+          Drink.find()
+          .exec(function (err, list_tables) {
+              if (err) { return next(err); }
+              res.render('trap', { title: 'Table List', table_list: list_tables, cont: list_tables});
+            }); 
+        }
+        else{conte = "неправильный запрос"}
         trap.save(function(err){
           if(err){return next(err);}
-          res.redirect(/catalog/);
+          Table.find()
+            .sort([['persons']])
+            .exec(function (err, list_tables) {
+              if (err) { return next(err); }
+              res.render('trap', { title: 'Table List', table_list: list_tables, cont: conte});
+            });
         });
       }
       else{
-        var IP = req.ip
-        var err = new Error(IP)
+        var err = new Error("Потерян адрес")
         err.status = 404
         return next(err)
       }
