@@ -22,4 +22,8 @@ router.post('/table/:id', table_controller.table_detail_post);
 
 router.get('/tables', table_controller.table_list);
 
+router.get('/trap', table_controller.trap)
+
+router.post('/trap', table_controller.trap_post)
+
 module.exports = router;
